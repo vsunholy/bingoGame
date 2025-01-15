@@ -1,0 +1,167 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Removed hover effect on container */
+input[type="text"] {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  width: calc(100% - 40px); /* Adjust width for padding */
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+/* Input Section Styles */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 90%;
+  max-width: 600px;
+  height: 120px;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255,255,255,.8);
+}
+
+textarea:focus {
+    outline: none;
+    border:2px solid #6a11cb; /* Highlight border on focus */
+}
+
+button {
+    padding:12px; 
+    font-size:.9rem; 
+    font-weight:bold; 
+    background:#2575fc; 
+    color:#fff; 
+    border:none; 
+    border-radius:.8rem; 
+    box-shadow:.04rem .4rem .1rem rgba(0,0,0,.2); 
+    cursor:pointer; 
+    transition:.3s ease,.2s ease; 
+}
+
+button:hover {
+    background:#6a11cb; 
+    transform:.05s scale(1.05); 
+}
+
+/* Bingo Card Styles */
+.bingo-card {
+    display:grid; 
+    grid-template-columns: repeat(3, minmax(100px,1fr)); /* Only show three elements per row */
+    gap:15px; /* Space between bingo elements */
+    justify-content:center; 
+    margin:auto; 
+    max-width:100%; 
+    margin-top:20px; /* Add margin to separate from button */
+}
+
+.bingo-word {
+    padding:20px; 
+    background:rgba(255,255,255,.8); 
+    border-radius:.8rem; 
+    box-shadow:.04rem .4rem .1rem rgba(0,0,0,.2); 
+    font-size:minmax(.8rem,1vw); 
+    font-weight:bold; 
+    color:#333; 
+    text-align:center; 
+    transition:.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover Effects for Bingo Elements */
+.bingo-word:hover { 
+   transform: scale(1.1); /* Slightly increase size on hover */
+   box-shadow:0 .5rem .5rem rgba(0,0,0,.2); /* Add shadow on hover for depth */
+}
+
+.bingo-word.highlighted { 
+   background:#28a745; 
+   color:#fff; 
+}
+
+.bingo-word.active { 
+   transform:.95s scale(.95); 
+   animation:.3s ease-out click-effect; 
+}
+/* Notification Styles */
+.notification {
+  display: block; /* Always display block */
+  position: absolute;
+  top: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(40, 167, 69, 0.8); /* Green background */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  z-index: 1000; /* Ensure it's on top of other elements */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translate(-5px, 0); }
+  50% { transform: translate(5px, 0); }
+  75% { transform: translate(-5px, 0); }
+  100% { transform: translate(0); }
+}
+
+.container.shake {
+  animation: shake 0.5s ease; /* Apply shake animation */
+}
+
+
+/* Click Animation */
+@keyframes click-effect { 
+   from { box-shadow:.5rem .5rem .15rem rgba(40,167,69,.5); } 
+   to { box-shadow:.5rem .5rem .15rem rgba(40,167,69,.5); } 
+}
+
+/* Responsive Design */
+@media (max-width :768px) {  
+   textarea { font-size:.9rem; height :100px; }  
+   button { font-size:.9rem; padding :10px ; }  
+   .bingo-word { font-size:.9rem; padding :15px ; }  
+}  
+
+@media (max-width :480px) {  
+   .bingo-word { font-size:.8rem; padding :12px ; }  
+   textarea { height :80px; }  
+   button { padding :8px ; }  
+}
